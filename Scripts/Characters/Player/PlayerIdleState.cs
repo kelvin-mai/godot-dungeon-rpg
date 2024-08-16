@@ -1,35 +1,27 @@
 using Godot;
 using System;
 
-public partial class PlayerIdleState : Node
+public partial class PlayerIdleState : PlayerState
 {
-  private Player characterNode;
-
-  public override void _Ready()
-  {
-    characterNode = GetOwner<Player>();
-    SetPhysicsProcess(false);
-  }
-
   public override void _PhysicsProcess(double delta)
   {
     if (characterNode.direction != Vector2.Zero)
     {
-      characterNode.stateMachineNode.SwitchState<PlayerMoveState>();
+      characterNode.StateMachineNode.SwitchState<PlayerMoveState>();
     }
   }
 
-  public override void _Notification(int what)
+
+  public override void _Input(InputEvent @event)
   {
-    base._Notification(what);
-    if (what == 5001)
+    if (Input.IsActionJustPressed(GameConstants.INPUT_DASH))
     {
-      characterNode.animationPlayerNode.Play(GameConstants.ANIMATION_IDLE);
-      SetPhysicsProcess(true);
+      characterNode.StateMachineNode.SwitchState<PlayerDashState>();
     }
-    else if (what == 5002)
-    {
-      SetPhysicsProcess(false);
-    }
+  }
+
+  protected override void EnterState()
+  {
+    characterNode.AnimationPlayerNode.Play(GameConstants.ANIMATION_IDLE);
   }
 }
