@@ -35,11 +35,11 @@
 [ext_resource type="Script" path="res://Scripts/Characters/Player/PlayerIdleState.cs" id="32_hqoiq"]
 [ext_resource type="Texture2D" uid="uid://b64wgtkt0ogtn" path="res://Assets/Sprites/Characters/Player/Sliding/Sliding_000.png" id="33_qauft"]
 [ext_resource type="Script" path="res://Scripts/Characters/Player/PlayerMoveState.cs" id="33_vrf4l"]
-[ext_resource type="Script" path="res://Scripts/Characters/StateMachine.cs" id="34_ldde5"]
 [ext_resource type="Texture2D" uid="uid://bkdvpovw48ocm" path="res://Assets/Sprites/Characters/Player/Sliding/Sliding_001.png" id="34_m63b6"]
 [ext_resource type="Texture2D" uid="uid://bstyitk12y42b" path="res://Assets/Sprites/Characters/Player/Sliding/Sliding_002.png" id="35_d3bt7"]
 [ext_resource type="Texture2D" uid="uid://dkkohwpcjkioi" path="res://Assets/Sprites/Characters/Player/Sliding/Sliding_003.png" id="36_3pcry"]
 [ext_resource type="Texture2D" uid="uid://cql6hmjpmglpu" path="res://Assets/Sprites/Characters/Player/Sliding/Sliding_005.png" id="37_i0ptw"]
+[ext_resource type="PackedScene" uid="uid://dddc5on7nem84" path="res://Scenes/Characters/StateMachine.tscn" id="38_tx2jn"]
 [ext_resource type="Script" path="res://Scripts/Characters/Player/PlayerDashState.cs" id="41_4t8sj"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_jjsbe"]
@@ -113,7 +113,7 @@ StateMachineNode = NodePath("StateMachine")
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
 pixel_size = 0.0025
-texture = ExtResource("2_plho3")
+texture = ExtResource("33_qauft")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0692926, 0.026306, 0)
@@ -124,8 +124,7 @@ libraries = {
 "": SubResource("AnimationLibrary_8qm20")
 }
 
-[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("currentState", "states")]
-script = ExtResource("34_ldde5")
+[node name="StateMachine" parent="." node_paths=PackedStringArray("currentState", "states") instance=ExtResource("38_tx2jn")]
 currentState = NodePath("IdleState")
 states = [NodePath("IdleState"), NodePath("MoveState"), NodePath("DashState")]
 
