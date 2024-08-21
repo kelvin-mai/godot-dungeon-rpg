@@ -1,4 +1,4 @@
-[gd_scene load_steps=110 format=3 uid="uid://bj76dxr5pxmos"]
+[gd_scene load_steps=116 format=3 uid="uid://bj76dxr5pxmos"]
 
 [ext_resource type="Script" path="res://Scripts/Characters/Enemy/Enemy.cs" id="1_bwx7m"]
 [ext_resource type="Texture2D" uid="uid://b3pimqxcw6wvk" path="res://Assets/Sprites/Characters/Enemy Knight/TakeHit/0_Demons_of_Darkness_Hurt_011.png" id="1_y5qda"]
@@ -102,40 +102,10 @@
 [ext_resource type="Texture2D" uid="uid://c4la1wd5tks6d" path="res://Assets/Sprites/Characters/Enemy Knight/TakeHit/0_Demons_of_Darkness_Hurt_010.png" id="99_r5stg"]
 [ext_resource type="PackedScene" uid="uid://dddc5on7nem84" path="res://Scenes/Characters/StateMachine.tscn" id="100_7m5cv"]
 [ext_resource type="Script" path="res://Scripts/Characters/Enemy/EnemyIdleState.cs" id="101_ttbly"]
-
-[sub_resource type="Animation" id="Animation_2g4ke"]
-resource_name = "Idle"
-loop_mode = 1
-step = 0.0555556
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite3D:texture")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.0555556, 0.111111, 0.166667, 0.222222, 0.277778, 0.333333, 0.388889, 0.444444, 0.5, 0.555556, 0.611111, 0.666667, 0.722222, 0.777778, 0.833333, 0.888889, 0.944444),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [ExtResource("2_fidyg"), ExtResource("3_bhrpe"), ExtResource("4_4vvds"), ExtResource("5_t32pu"), ExtResource("6_ca1o6"), ExtResource("7_y7dw1"), ExtResource("8_citac"), ExtResource("9_xtcmf"), ExtResource("10_3m15u"), ExtResource("11_dmluu"), ExtResource("12_71e3v"), ExtResource("13_6xvvw"), ExtResource("14_g10s0"), ExtResource("15_h4dlj"), ExtResource("16_gqph3"), ExtResource("17_pi4ia"), ExtResource("18_6g6x4"), ExtResource("19_xhdn0")]
-}
-
-[sub_resource type="Animation" id="Animation_ps08b"]
-resource_name = "Move"
-loop_mode = 1
-step = 0.0416667
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite3D:texture")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.0416667, 0.0833333, 0.125, 0.166667, 0.208333, 0.25, 0.291667, 0.333333, 0.375, 0.416667, 0.458333, 0.5, 0.541667, 0.583333, 0.625, 0.666667, 0.708333, 0.75, 0.791667, 0.833333, 0.875, 0.916667, 0.958333),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [ExtResource("20_8jjfx"), ExtResource("21_xias6"), ExtResource("22_0narh"), ExtResource("23_efkfq"), ExtResource("24_3g8j4"), ExtResource("25_648r0"), ExtResource("26_eg34m"), ExtResource("27_1xpc8"), ExtResource("28_giux6"), ExtResource("29_l0v84"), ExtResource("30_f3r6o"), ExtResource("31_rgxfh"), ExtResource("32_bneir"), ExtResource("33_2rqfa"), ExtResource("34_oeso3"), ExtResource("35_epl6d"), ExtResource("36_8qith"), ExtResource("37_7e5jk"), ExtResource("38_pqcme"), ExtResource("39_u4i3g"), ExtResource("40_3qund"), ExtResource("41_kv5kw"), ExtResource("42_k2v10"), ExtResource("43_d5xkp")]
-}
+[ext_resource type="Script" path="res://Scripts/Characters/Enemy/EnemyReturnState.cs" id="103_8p7uu"]
+[ext_resource type="Script" path="res://Scripts/Characters/Enemy/EnemyPatrolState.cs" id="104_lerod"]
+[ext_resource type="Script" path="res://Scripts/Characters/Enemy/EnemyChaseState.cs" id="105_o8nev"]
+[ext_resource type="Script" path="res://Scripts/Characters/Enemy/EnemyAttackState.cs" id="106_unjoo"]
 
 [sub_resource type="Animation" id="Animation_0orbc"]
 resource_name = "Attack"
@@ -181,6 +151,40 @@ tracks/1/keys = {
 "values": [0.0025, 0.0025, 0.0075]
 }
 
+[sub_resource type="Animation" id="Animation_2g4ke"]
+resource_name = "Idle"
+loop_mode = 1
+step = 0.0555556
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0555556, 0.111111, 0.166667, 0.222222, 0.277778, 0.333333, 0.388889, 0.444444, 0.5, 0.555556, 0.611111, 0.666667, 0.722222, 0.777778, 0.833333, 0.888889, 0.944444),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("2_fidyg"), ExtResource("3_bhrpe"), ExtResource("4_4vvds"), ExtResource("5_t32pu"), ExtResource("6_ca1o6"), ExtResource("7_y7dw1"), ExtResource("8_citac"), ExtResource("9_xtcmf"), ExtResource("10_3m15u"), ExtResource("11_dmluu"), ExtResource("12_71e3v"), ExtResource("13_6xvvw"), ExtResource("14_g10s0"), ExtResource("15_h4dlj"), ExtResource("16_gqph3"), ExtResource("17_pi4ia"), ExtResource("18_6g6x4"), ExtResource("19_xhdn0")]
+}
+
+[sub_resource type="Animation" id="Animation_ps08b"]
+resource_name = "Move"
+loop_mode = 1
+step = 0.0416667
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0416667, 0.0833333, 0.125, 0.166667, 0.208333, 0.25, 0.291667, 0.333333, 0.375, 0.416667, 0.458333, 0.5, 0.541667, 0.583333, 0.625, 0.666667, 0.708333, 0.75, 0.791667, 0.833333, 0.875, 0.916667, 0.958333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("20_8jjfx"), ExtResource("21_xias6"), ExtResource("22_0narh"), ExtResource("23_efkfq"), ExtResource("24_3g8j4"), ExtResource("25_648r0"), ExtResource("26_eg34m"), ExtResource("27_1xpc8"), ExtResource("28_giux6"), ExtResource("29_l0v84"), ExtResource("30_f3r6o"), ExtResource("31_rgxfh"), ExtResource("32_bneir"), ExtResource("33_2rqfa"), ExtResource("34_oeso3"), ExtResource("35_epl6d"), ExtResource("36_8qith"), ExtResource("37_7e5jk"), ExtResource("38_pqcme"), ExtResource("39_u4i3g"), ExtResource("40_3qund"), ExtResource("41_kv5kw"), ExtResource("42_k2v10"), ExtResource("43_d5xkp")]
+}
+
 [sub_resource type="Animation" id="Animation_uiikh"]
 resource_name = "TakeHit"
 step = 0.0833333
@@ -209,11 +213,22 @@ _data = {
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_2e0lx"]
 height = 1.46612
 
-[node name="Enemy" type="CharacterBody3D" node_paths=PackedStringArray("AnimationPlayerNode", "SpriteNode", "StateMachineNode")]
+[sub_resource type="SphereShape3D" id="SphereShape3D_47gbr"]
+radius = 6.0
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_ts0ni"]
+radius = 1.4
+
+[node name="Enemy" type="CharacterBody3D" node_paths=PackedStringArray("AnimationPlayerNode", "SpriteNode", "StateMachineNode", "AgentNode", "ChaseAreaNode", "AttackAreaNode")]
+collision_layer = 4
+collision_mask = 3
 script = ExtResource("1_bwx7m")
 AnimationPlayerNode = NodePath("AnimationPlayer")
 SpriteNode = NodePath("Sprite3D")
 StateMachineNode = NodePath("StateMachine")
+AgentNode = NodePath("NavigationAgent3D")
+ChaseAreaNode = NodePath("ChaseArea")
+AttackAreaNode = NodePath("AttackArea")
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
 pixel_size = 0.0025
@@ -228,9 +243,47 @@ libraries = {
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0113102, 0)
 shape = SubResource("CapsuleShape3D_2e0lx")
 
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
+debug_enabled = true
+
 [node name="StateMachine" parent="." node_paths=PackedStringArray("currentState", "states") instance=ExtResource("100_7m5cv")]
 currentState = NodePath("IdleState")
-states = [NodePath("IdleState")]
+states = [NodePath("IdleState"), NodePath("ReturnState"), NodePath("PatrolState"), NodePath("ChaseState"), NodePath("AttackState")]
 
 [node name="IdleState" type="Node" parent="StateMachine"]
 script = ExtResource("101_ttbly")
+
+[node name="ReturnState" type="Node" parent="StateMachine"]
+script = ExtResource("103_8p7uu")
+
+[node name="PatrolState" type="Node" parent="StateMachine" node_paths=PackedStringArray("idleTimerNode")]
+script = ExtResource("104_lerod")
+idleTimerNode = NodePath("Timer")
+
+[node name="Timer" type="Timer" parent="StateMachine/PatrolState"]
+one_shot = true
+
+[node name="ChaseState" type="Node" parent="StateMachine" node_paths=PackedStringArray("timerNode")]
+script = ExtResource("105_o8nev")
+timerNode = NodePath("Timer")
+
+[node name="Timer" type="Timer" parent="StateMachine/ChaseState"]
+wait_time = 0.5
+autostart = true
+
+[node name="AttackState" type="Node" parent="StateMachine"]
+script = ExtResource("106_unjoo")
+
+[node name="ChaseArea" type="Area3D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ChaseArea"]
+shape = SubResource("SphereShape3D_47gbr")
+
+[node name="AttackArea" type="Area3D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="AttackArea"]
+shape = SubResource("SphereShape3D_ts0ni")
