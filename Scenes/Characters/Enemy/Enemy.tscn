@@ -1,4 +1,4 @@
-[gd_scene load_steps=121 format=3 uid="uid://bj76dxr5pxmos"]
+[gd_scene load_steps=122 format=3 uid="uid://bj76dxr5pxmos"]
 
 [ext_resource type="Script" path="res://Scripts/Characters/Enemy/Enemy.cs" id="1_bwx7m"]
 [ext_resource type="Texture2D" uid="uid://b3pimqxcw6wvk" path="res://Assets/Sprites/Characters/Enemy Knight/TakeHit/0_Demons_of_Darkness_Hurt_011.png" id="1_y5qda"]
@@ -103,6 +103,7 @@
 [ext_resource type="Texture2D" uid="uid://c4la1wd5tks6d" path="res://Assets/Sprites/Characters/Enemy Knight/TakeHit/0_Demons_of_Darkness_Hurt_010.png" id="99_r5stg"]
 [ext_resource type="PackedScene" uid="uid://dddc5on7nem84" path="res://Scenes/Characters/StateMachine.tscn" id="100_7m5cv"]
 [ext_resource type="Script" path="res://Scripts/Characters/Enemy/EnemyIdleState.cs" id="101_ttbly"]
+[ext_resource type="Script" path="res://Scripts/Characters/AttackHitbox.cs" id="102_7qh55"]
 [ext_resource type="Script" path="res://Scripts/Characters/Enemy/EnemyReturnState.cs" id="103_8p7uu"]
 [ext_resource type="Script" path="res://Scripts/Characters/Enemy/EnemyPatrolState.cs" id="104_lerod"]
 [ext_resource type="Script" path="res://Scripts/Characters/Enemy/EnemyChaseState.cs" id="105_o8nev"]
@@ -303,6 +304,7 @@ shape = SubResource("CapsuleShape3D_2e0lx")
 [node name="Hitbox" type="Area3D" parent="."]
 collision_layer = 4
 collision_mask = 0
+script = ExtResource("102_7qh55")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Hitbox"]
 shape = SubResource("BoxShape3D_3x6pa")

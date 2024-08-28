@@ -1,4 +1,4 @@
-[gd_scene load_steps=94 format=3 uid="uid://drxn6a7cvdfmt"]
+[gd_scene load_steps=96 format=3 uid="uid://drxn6a7cvdfmt"]
 
 [ext_resource type="Script" path="res://Scripts/Characters/Player/Player.cs" id="1_8pok2"]
 [ext_resource type="Texture2D" uid="uid://c4cv1ahfocsad" path="res://Assets/Sprites/Characters/Player/Running/Running_002.png" id="1_n7lgm"]
@@ -83,7 +83,9 @@
 [ext_resource type="Texture2D" uid="uid://c2ttw1vp1np8e" path="res://Assets/Sprites/Characters/Player/Dying/Dying_012.png" id="75_3km1s"]
 [ext_resource type="Texture2D" uid="uid://c1abwpq3wc1d0" path="res://Assets/Sprites/Characters/Player/Dying/Dying_013.png" id="76_f7w64"]
 [ext_resource type="Texture2D" uid="uid://c6o6kro4ltotp" path="res://Assets/Sprites/Characters/Player/Dying/Dying_014.png" id="77_6cn62"]
+[ext_resource type="Script" path="res://Scripts/Characters/AttackHitbox.cs" id="79_yyrsq"]
 [ext_resource type="Script" path="res://Scripts/Characters/Player/PlayerDeathState.cs" id="83_5gu7i"]
+[ext_resource type="PackedScene" uid="uid://x2vohfrg2bpa" path="res://Scenes/Abilities/Bomb.tscn" id="83_84wo5"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_jjsbe"]
 height = 1.39299
@@ -257,6 +259,7 @@ libraries = {
 [node name="Hitbox" type="Area3D" parent="."]
 collision_layer = 2
 collision_mask = 0
+script = ExtResource("79_yyrsq")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Hitbox"]
 shape = SubResource("BoxShape3D_cumuc")
@@ -282,6 +285,7 @@ script = ExtResource("33_vrf4l")
 [node name="DashState" type="Node" parent="StateMachine" node_paths=PackedStringArray("dashTimerNode")]
 script = ExtResource("41_4t8sj")
 dashTimerNode = NodePath("Timer")
+bombScene = ExtResource("83_84wo5")
 
 [node name="Timer" type="Timer" parent="StateMachine/DashState"]
 wait_time = 0.4
