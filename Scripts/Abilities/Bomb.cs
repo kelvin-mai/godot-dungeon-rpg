@@ -1,13 +1,8 @@
 using Godot;
 using System;
 
-public partial class Bomb : Node3D
+public partial class Bomb : Ability
 {
-  [Export]
-  public float Damage { get; private set; } = 10;
-  [Export]
-  private AnimationPlayer playerNode;
-
   public override void _Ready()
   {
     playerNode.AnimationFinished += HandleExpandAnimationFinished;
